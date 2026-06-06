@@ -1,0 +1,33 @@
+taro-button-core + taro-button-core {
+  margin-top: 0 !important;
+}
+:root,
+page {
+  --nut-primary-color: #51a8ec;
+  --nut-primary-color-end: #73cced;
+}
+.nut-cell-group__wrap {
+  box-shadow: none;
+}
+.nut-cell-group .nut-cell:after {
+  border-bottom: 0;
+}
+.nut-cell-group__wrap .nut-cell {
+  & + .nut-cell {
+    padding: 0 32rpx 32rpx 32rpx;
+  }
+}
+.nut-input {
+  padding: 0 32rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+}
+.page {
+  padding: 20rpx;
+  min-height: calc(100vh - 40rpx);
+  background: linear-gradient(
+    135deg,
+    rgba(#2196f3, 0.2) 100%,
+    rgba(#764ba2, 0.1) 100%
+  );
+}
