@@ -2,7 +2,7 @@
   "miniprogramRoot": "dist/",
   "projectname": "miniGame",
   "description": "",
-  "appid": "wx807abe5ccbf832b8",
+  "appid": "",
   "setting": {
     "urlCheck": true,
     "es6": false,
