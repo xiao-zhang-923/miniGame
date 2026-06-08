@@ -1,5 +1,4 @@
-
-import { createApp } from 'vue'
+import { createApp } from "vue";
 import {
   Button,
   Card,
@@ -9,27 +8,60 @@ import {
   Col,
   CellGroup,
   Row,
-  Toast
-} from '@nutui/nutui-taro'
-import '@nutui/nutui-taro/dist/style.css'
-import './app.scss'
-
-  
+  Toast,
+} from "@nutui/nutui-taro";
+import "@nutui/nutui-taro/dist/style.css";
+import "./app.scss";
+import Taro from "@tarojs/taro";
 
 const App = createApp({
-  onShow (options) {
-    console.log('App onShow.')
+  onLaunch() {
+    this.checkAppUpdate();
   },
-  // 入口组件不需要实现 render 方法，即使实现了也会被 taro 所覆盖
-})
-App.use(Button)
-App.use(Card)
-App.use(Input)
-App.use(Noticebar)
-App.use(Cell)
-App.use(Col)
-App.use(CellGroup)
-App.use(Row)
-App.use(Toast)
 
-export default App
+  onShow() {},
+  methods: {
+    checkAppUpdate() {
+      if (process.env.TARO_ENV !== "weapp") return; 
+      const updateManager = Taro.getUpdateManager()
+      console.log("🚀 ~ updateManager:", updateManager)
+      updateManager.onCheckForUpdate((res) => {
+        if (res.hasUpdate) {
+          Taro.showLoading({ title: '正在检查更新...' })
+        }
+      })
+      updateManager.onUpdateReady(() => {
+        Taro.hideLoading()
+        Taro.showModal({
+          title: '更新提示',
+          content: '新版本已准备好，是否重启应用？',
+          success: (modalRes) => {
+            if (modalRes.confirm) {
+              // 重启应用新版本
+              updateManager.applyUpdate()
+            }
+          }
+        })
+      }) 
+      updateManager.onUpdateFailed(() => {
+        Taro.hideLoading()
+        Taro.showToast({
+          title: '更新失败，请稍后重试',
+          icon: 'none',
+          duration: 2000
+        })
+      })
+    },
+  },
+});
+App.use(Button);
+App.use(Card);
+App.use(Input);
+App.use(Noticebar);
+App.use(Cell);
+App.use(Col);
+App.use(CellGroup);
+App.use(Row);
+App.use(Toast);
+
+export default App;
