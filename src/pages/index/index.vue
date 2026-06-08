@@ -12,6 +12,11 @@
         <view class="icon">➗</view>
         <text>速算挑战</text>
       </view>
+
+       <view class="item" @click="goGame('memoryPlipping')">
+        <view class="icon">🃏</view>
+        <text>记忆翻牌</text>
+      </view>
     </view>
   </view>
 </template>

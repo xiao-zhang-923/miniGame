@@ -24,7 +24,6 @@ const App = createApp({
     checkAppUpdate() {
       if (process.env.TARO_ENV !== "weapp") return; 
       const updateManager = Taro.getUpdateManager()
-      console.log("🚀 ~ updateManager:", updateManager)
       updateManager.onCheckForUpdate((res) => {
         if (res.hasUpdate) {
           Taro.showLoading({ title: '正在检查更新...' })

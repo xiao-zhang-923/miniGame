@@ -3,6 +3,7 @@ export default defineAppConfig({
     'pages/index/index',
     'pages/modules/spellWords/index',
     'pages/modules/mathGame/index',
+    'pages/modules/memoryPlipping/index'
   ],
   window: {
     backgroundTextStyle: 'light',

@@ -1,4 +1,3 @@
-<!-- eslint-disable vue/multi-word-component-names -->
 <template>
   <view class="page pageSpellWord">
 
@@ -93,6 +92,11 @@
 <script setup>
 import { ref, onMounted, reactive } from "vue";
 import { sentenceList } from "../../../utils/sentence";
+
+
+defineOptions({
+  name: 'SpellWord'
+})
 
 function getRandomIndex() {
   return Math.floor(Math.random() * sentenceList.length) + 1;

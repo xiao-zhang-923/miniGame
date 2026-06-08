@@ -1,4 +1,3 @@
-<!-- eslint-disable vue/multi-word-component-names -->
 <template>
   <view class="page pageMathGame">
     <!-- 题目区：4个数字卡片 -->
@@ -56,6 +55,10 @@
 <script setup>
 import { ref, reactive } from "vue";
 import { generateValidPuzzle, safeEval } from "./calc24";
+
+defineOptions({
+  name: 'MathGame'
+})
 
 const state = reactive({
   title: "",
